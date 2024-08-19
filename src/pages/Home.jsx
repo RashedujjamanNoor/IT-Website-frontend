@@ -3,7 +3,7 @@ const Home = () => {
     <div className="mx-[5%] my-16 text-justify md:mx-[10%]">
       <div>
         <div className=" md:flex md:justify-between md:items-center">
-          <div className="order-2 mb-8 p-20">
+          <div className="order-2 mb-8 md:p-20">
             <img src="hero.svg" alt="" />
           </div>
           <div className="text-white order-1 md:w-1/2">
@@ -47,7 +47,7 @@ const Home = () => {
           </div>
         </div>
         <div className="md:flex justify-between items-center">
-          <div className="p-20">
+          <div className="md:p-20">
             <img src="home2.svg" alt="" />
           </div>
           <div className="text-white mt-10 md:w-1/2">
