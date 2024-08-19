@@ -19,7 +19,7 @@ const Contact = () => {
   console.log(contact);
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <div className="text-white mx-[5%] md:mx-[10%] md:grid grid-cols-2 justify-items-center items-center my-8">
         <div className="my-12">
           <h1 className=" text-center font-bold text-2xl mb-8">
@@ -64,8 +64,22 @@ const Contact = () => {
                 className="w-80 h-44 rounded-md py-1 px-2 text-sm font-semibold text-gray-800 outline-none focus:border-blue-500 border-2"
               ></textarea>
             </div>
+            <button
+              type="submit"
+              className="bg-blue-600 rounded-lg py-1 text-lg font-bold my-4 px-2"
+            >
+              Submit
+            </button>
           </form>
         </div>
+      </div>
+      <div>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57500.541308570035!2d88.88611850525591!3d25.744661286017777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e3518691a6804f%3A0x6032167fc00bc3d3!2sSaidpur%20Airport!5e0!3m2!1sen!2sbd!4v1724079571197!5m2!1sen!2sbd"
+          className="w-screen h-64 rounded-md"
+          allowFullScreen=""
+          loading="lazy"
+        ></iframe>
       </div>
     </div>
   );
