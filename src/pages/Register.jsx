@@ -17,19 +17,26 @@ const Register = () => {
     });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   console.log(user);
 
   return (
     <>
-      <div className="my-8 mx-[5%] text-white md:flex justify-between items-center">
+      <div className="my-8 mx-[5%] text-white md:flex justify-between items-center md:mx-[10%]">
         <div>
           <img src="home.svg" alt="" />
         </div>
-        <div className="my-4  rounded-md md:mr-28 flex flex-col justify-center items-center">
+        <div className="my-4  rounded-md md:mr-28 flex flex-col justify-center items-center mt-8">
           <h1 className="font-bold text-3xl text-center mb-3 md:text-4xl">
             Registration Form
           </h1>
-          <form action="" className="flex flex-col gap-2 justify-center ">
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col gap-2 justify-center "
+          >
             <div className="flex flex-col gap-1">
               <label htmlFor="username" className="text-lg font-semibold">
                 User Name
