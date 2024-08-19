@@ -55,7 +55,7 @@ const Register = () => {
                 Email
               </label>
               <input
-                type="text"
+                type="email"
                 name="email"
                 placeholder="Enter your email"
                 className="outline-none focus:outline-blue-500 border-blue-500 rounded-md px-2 py-1  text-black text-sm font-semibold w-80"

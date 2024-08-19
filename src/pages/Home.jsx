@@ -1,15 +1,17 @@
 const Home = () => {
   return (
-    <div className="mx-[5%] my-16 text-justify md:mx-[10%]">
+    <div className="mx-[5%] my-8 text-justify md:mx-[10%]">
       <div>
         <div className=" md:flex md:justify-between md:items-center">
           <div className="order-2 mb-8 md:p-20">
             <img src="hero.svg" alt="" />
           </div>
           <div className="text-white order-1 md:w-1/2">
-            <h2 className="font-semibold ">We are the World Best IT Company</h2>
+            <h2 className="font-semibold text-gray-200">
+              We are the World Best IT Company
+            </h2>
             <h1 className="font-bold text-4xl mt-1 mb-3">Welcome to SOFT IT</h1>
-            <p className="text-sm font-semibold">
+            <p className="text-sm font-semibold text-gray-200">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
               illum rem sequi ipsa voluptatum nisi nobis quod enim totam magnam,
               ipsum impedit quaerat labore itaque eos commodi harum nemo quidem?
@@ -51,9 +53,11 @@ const Home = () => {
             <img src="home2.svg" alt="" />
           </div>
           <div className="text-white mt-10 md:w-1/2">
-            <h2 className="font-semibold ">We are the World Best IT Company</h2>
-            <h1 className="font-bold text-4xl mt-1 mb-3">Welcome to SOFT IT</h1>
-            <p className="text-sm font-semibold">
+            <h2 className="font-semibold text-gray-200">
+              We are the World Best IT Company
+            </h2>
+            <h1 className="font-bold text-4xl mt-1 mb-3">Get Started Today</h1>
+            <p className="text-sm font-semibold text-gray-200">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
               illum rem sequi ipsa voluptatum nisi nobis quod enim totam magnam,
               ipsum impedit quaerat labore itaque eos commodi harum nemo quidem?

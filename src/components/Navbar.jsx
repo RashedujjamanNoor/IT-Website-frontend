@@ -5,7 +5,7 @@ const Navbar = () => {
     <div className="bg-gray-900 text-blue-400 font-bold shadow-xl sticky top-0">
       <header className="flex justify-between items-center py-3 mx-[5%] md:mx-[10%]">
         <div>
-          <h1 className="text-2xl">Noor.</h1>
+          <h1 className="text-2xl md:text-4xl">Noor.</h1>
         </div>
         <nav>
           <ul className="hidden md:flex justify-between items-center gap-4">
