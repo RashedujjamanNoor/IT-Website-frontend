@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -16,8 +18,28 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const response = await fetch(`http://localhost:5000/api/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+
+      if (response.ok) {
+        setUser({
+          email: "",
+
+          password: "",
+        });
+        navigate("/");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
