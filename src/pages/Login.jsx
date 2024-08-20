@@ -23,7 +23,7 @@ const Login = () => {
   return (
     <>
       <div className="my-8 mx-[5%] text-white md:flex justify-between items-center md:mx-[10%]">
-        <div>
+        <div className="md:mx-5">
           <img src="home.svg" alt="" />
         </div>
         <div className="my-4  rounded-md md:mr-28 flex flex-col justify-center items-center mt-8">

@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     username: "",
     email: "",
@@ -17,8 +19,29 @@ const Register = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const response = await fetch(`http://localhost:5000/api/auth/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+
+      if (response.ok) {
+        setUser({
+          username: "",
+          email: "",
+          phone: "",
+          password: "",
+        });
+        navigate("/login");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   console.log(user);
@@ -26,7 +49,7 @@ const Register = () => {
   return (
     <>
       <div className="my-8 mx-[5%] text-white md:flex justify-between items-center md:mx-[10%]">
-        <div>
+        <div className="md:mx-5">
           <img src="home.svg" alt="" />
         </div>
         <div className="my-4  rounded-md md:mr-28 flex flex-col justify-center items-center mt-8">

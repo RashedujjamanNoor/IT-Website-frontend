@@ -10,7 +10,7 @@ const About = () => {
             We are the World Best IT Company
           </h2>
           <h1 className="font-bold text-4xl mt-1 mb-3">Why Choose Us?</h1>
-          <div className="flex flex-col justify-center items-center text-justify gap-3">
+          <div className="flex flex-col justify-center  text-justify gap-3">
             <p className="text-sm  text-gray-200">
               Innovative Solutions: We deliver cutting-edge software that drives
               your business forward.
