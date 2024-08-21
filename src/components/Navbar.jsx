@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
+import { useAuth } from "../store/auth";
 
 const Navbar = () => {
+  const { isLogedIn } = useAuth();
   return (
     <div className="bg-gray-900 text-blue-400 font-bold shadow-xl sticky top-0">
       <header className="flex justify-between items-center py-3 mx-[5%] md:mx-[10%]">
@@ -21,12 +23,20 @@ const Navbar = () => {
             <li>
               <NavLink to="/service">Service</NavLink>
             </li>
-            <li>
-              <NavLink to="/register">Register</NavLink>
-            </li>
-            <li>
-              <NavLink to="/login">Login</NavLink>
-            </li>
+            {isLogedIn ? (
+              <li>
+                <NavLink to="/logout">Logout</NavLink>
+              </li>
+            ) : (
+              <>
+                <li>
+                  <NavLink to="/register">Register</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/login">Login</NavLink>
+                </li>
+              </>
+            )}
           </ul>
         </nav>
       </header>
