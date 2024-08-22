@@ -1,11 +1,24 @@
 import { useState } from "react";
+import { useAuth } from "../store/auth";
 
 const Contact = () => {
+  const { user } = useAuth();
   const [contact, setContact] = useState({
     username: "",
     email: "",
     message: "",
   });
+
+  const [userData, setUserData] = useState(true);
+
+  if (userData && user) {
+    setContact({
+      username: user.username,
+      email: user.email,
+      message: "",
+    });
+    setUserData(false);
+  }
 
   const handleInput = (e) => {
     const name = e.target.name;
@@ -34,6 +47,7 @@ const Contact = () => {
                 Username
               </label>
               <input
+                value={contact.username}
                 onChange={handleInput}
                 type="text"
                 placeholder="Enter your name"
@@ -46,6 +60,7 @@ const Contact = () => {
                 Email
               </label>
               <input
+                value={contact.email}
                 onChange={handleInput}
                 type="email"
                 placeholder="Enter your email"
