@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { useAuth } from "../store/auth";
 
+const defaultContact = {
+  username: "",
+  email: "",
+  message: "",
+};
 const Contact = () => {
-  const { user } = useAuth();
-  const [contact, setContact] = useState({
-    username: "",
-    email: "",
-    message: "",
-  });
+  const [contact, setContact] = useState(defaultContact);
 
   const [userData, setUserData] = useState(true);
+  const { user } = useAuth();
 
   if (userData && user) {
     setContact({
@@ -29,7 +30,21 @@ const Contact = () => {
       [name]: value,
     });
   };
-  console.log(contact);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await fetch("http://localhost:5000/api/form/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(contact),
+    });
+
+    if (response.ok) {
+      alert("message send successfully");
+      setContact(defaultContact);
+    }
+  };
 
   return (
     <div className="overflow-x-hidden">
@@ -41,7 +56,7 @@ const Contact = () => {
           <img src="contact.svg" alt="" />
         </div>
         <div className="flex justify-center items-center">
-          <form action="">
+          <form onSubmit={handleSubmit}>
             <div className="flex flex-col my-2">
               <label htmlFor="username" className="text-lg font-semibold mb-1">
                 Username
@@ -73,7 +88,9 @@ const Contact = () => {
                 Message
               </label>
               <textarea
+                value={contact.message}
                 onChange={handleInput}
+                autoComplete="off"
                 name="message"
                 id=""
                 className="w-80 h-44 rounded-md py-1 px-2 text-sm font-semibold text-gray-800 outline-none focus:border-blue-500 border-2"
