@@ -7,6 +7,7 @@ export const AuthProvider = ({ children }) => {
   const [services, setServices] = useState();
   const [user, setUser] = useState("");
   const [token, setToken] = useState(localStorage.getItem("token"));
+  const authorizationToken = `Bearer ${token}`;
 
   const storeTokenInLs = (serverToken) => {
     setToken(serverToken);
@@ -25,7 +26,7 @@ export const AuthProvider = ({ children }) => {
       const response = await fetch("http://localhost:5000/api/auth/user", {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: authorizationToken,
         },
       });
 
@@ -64,7 +65,14 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ storeTokenInLs, LogoutUser, isLogedIn, user, services }}
+      value={{
+        storeTokenInLs,
+        LogoutUser,
+        isLogedIn,
+        user,
+        services,
+        authorizationToken,
+      }}
     >
       {children}
     </AuthContext.Provider>
