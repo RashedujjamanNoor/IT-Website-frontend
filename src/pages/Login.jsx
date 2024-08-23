@@ -31,8 +31,8 @@ const Login = () => {
         body: JSON.stringify(user),
       });
 
+      const resData = await response.json();
       if (response.ok) {
-        const resData = await response.json();
         storeTokenInLs(resData.token);
         setUser({
           email: "",
@@ -40,6 +40,8 @@ const Login = () => {
           password: "",
         });
         navigate("/");
+      } else {
+        alert(resData.extraDetails ? resData.extraDetails : resData.message);
       }
     } catch (error) {
       console.log(error);
