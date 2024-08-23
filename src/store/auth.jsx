@@ -4,6 +4,7 @@ export const AuthContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 export const AuthProvider = ({ children }) => {
+  const [services, setServices] = useState();
   const [user, setUser] = useState("");
   const [token, setToken] = useState(localStorage.getItem("token"));
 
@@ -42,9 +43,29 @@ export const AuthProvider = ({ children }) => {
     getUserData();
   }, []);
 
+  const serviceData = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/data/service", {
+        method: "GET",
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+
+        setServices(data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    serviceData();
+  }, []);
+
   return (
     <AuthContext.Provider
-      value={{ storeTokenInLs, LogoutUser, isLogedIn, user }}
+      value={{ storeTokenInLs, LogoutUser, isLogedIn, user, services }}
     >
       {children}
     </AuthContext.Provider>
