@@ -20,11 +20,30 @@ const AdminUsers = () => {
       console.log(error);
     }
   };
-  console.log(users);
 
   useEffect(() => {
     getUsers();
-  }, []);
+  }, [users]);
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/admin/users/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: authorizationToken,
+          },
+        }
+      );
+
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <div className="text-white flex flex-col justify-center items-center  md:mx-[10%]">
@@ -52,7 +71,10 @@ const AdminUsers = () => {
                     <button className="bg-slate-300 text-gray-800 rounded-md px-1">
                       Edit
                     </button>
-                    <button className="bg-slate-300 text-gray-800 rounded-md px-1">
+                    <button
+                      onClick={() => handleDelete(user._id)}
+                      className="bg-slate-300 text-gray-800 rounded-md px-1"
+                    >
                       Delete
                     </button>
                   </td>
