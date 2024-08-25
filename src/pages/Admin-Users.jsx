@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../store/auth";
+import { Link } from "react-router-dom";
 
 const AdminUsers = () => {
   const { authorizationToken } = useAuth();
@@ -23,7 +24,7 @@ const AdminUsers = () => {
 
   useEffect(() => {
     getUsers();
-  }, [users]);
+  }, []);
 
   const handleDelete = async (id) => {
     try {
@@ -68,9 +69,11 @@ const AdminUsers = () => {
                   <td>{user.email}</td>
                   <td>{user.phone}</td>
                   <td className="flex flex-col gap-2 font-bold">
-                    <button className="bg-slate-300 text-gray-800 rounded-md px-1">
-                      Edit
-                    </button>
+                    <Link to={`/admin/update/${user._id}`}>
+                      <button className="bg-slate-300 text-gray-800 rounded-md px-1">
+                        Edit
+                      </button>
+                    </Link>
                     <button
                       onClick={() => handleDelete(user._id)}
                       className="bg-slate-300 text-gray-800 rounded-md px-1"
