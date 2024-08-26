@@ -1,6 +1,17 @@
 import { NavLink, Outlet } from "react-router-dom";
+import { useAuth } from "../../store/auth";
+import { useNavigate } from "react-router-dom";
 
 const AdminLayout = () => {
+  const { user, isLoading } = useAuth();
+  console.log(user);
+  const navigate = useNavigate();
+  if (isLoading) {
+    return <h1>Loading....</h1>;
+  }
+  if (!user.isAdmin) {
+    return navigate("/");
+  }
   return (
     <>
       <div className="mx-[5%] md:mx-[10%]  ">

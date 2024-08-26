@@ -6,6 +6,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [services, setServices] = useState();
   const [user, setUser] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const [token, setToken] = useState(localStorage.getItem("token"));
   const authorizationToken = `Bearer ${token}`;
 
@@ -23,6 +24,7 @@ export const AuthProvider = ({ children }) => {
 
   const getUserData = async () => {
     try {
+      setIsLoading(true);
       const response = await fetch("http://localhost:5000/api/auth/user", {
         method: "GET",
         headers: {
@@ -34,6 +36,9 @@ export const AuthProvider = ({ children }) => {
         const data = await response.json();
 
         setUser(data);
+        setIsLoading(false);
+      } else {
+        setIsLoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -72,6 +77,7 @@ export const AuthProvider = ({ children }) => {
         user,
         services,
         authorizationToken,
+        isLoading,
       }}
     >
       {children}
