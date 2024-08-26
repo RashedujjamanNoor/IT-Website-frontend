@@ -15,6 +15,7 @@ import AdminUsers from "./pages/Admin-Users";
 import AdminContacts from "./pages/Admin-Contacts";
 import AdminServices from "./pages/Admin-Services";
 import AdminUpdate from "./pages/Admin-Update";
+import AdminAddService from "./pages/Admin-AddService";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="users" element={<AdminUsers />} />
           <Route path="contacts" element={<AdminContacts />} />
           <Route path="services" element={<AdminServices />} />
+          <Route path="services/create" element={<AdminAddService />} />
           <Route path="update/:id" element={<AdminUpdate />} />
         </Route>
       </Routes>
