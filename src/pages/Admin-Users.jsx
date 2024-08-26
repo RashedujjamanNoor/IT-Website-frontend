@@ -40,6 +40,7 @@ const AdminUsers = () => {
 
       const data = await response.json();
       console.log(data);
+      getUsers();
     } catch (error) {
       console.log(error);
     }
