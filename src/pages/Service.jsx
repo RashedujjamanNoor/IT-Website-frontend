@@ -9,12 +9,12 @@ const Service = () => {
           <h1 className="text-center text-white font-bold text-2xl md:text-4xl border-gray-200 border-b-2 my-2">
             Services
           </h1>
-          <div className=" flex flex-col justify-center items-center md:grid grid-cols-3 justify-items-center">
+          <div className=" flex flex-col justify-center items-center lg:grid-cols-2 lg:grid lg:justify-items-center 2xl:grid 2xl:grid-cols-3 2xl:justify-items-center ">
             {services &&
               services.data.map((item, index) => (
                 <div
                   key={index}
-                  className="w-96 p-4 border-gray-600 border-2 my-3 rounded-md shadow-md bg-slate-900"
+                  className="w-96 mx-1 p-4 border-gray-600 border-2 my-3 rounded-md shadow-md bg-slate-900"
                 >
                   <img src="home2.svg" alt="" className="w-96" />
                   <div className="flex justify-between items-center mt-4">
